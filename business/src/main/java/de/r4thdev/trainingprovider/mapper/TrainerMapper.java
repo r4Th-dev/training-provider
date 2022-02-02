@@ -1,4 +1,4 @@
-package de.r4thdev.trainingprovider.v1.mapper;
+package de.r4thdev.trainingprovider.mapper;
 
 import de.r4thdev.trainingprovider.repositories.Trainer;
 import de.r4thdev.trainingprovider.v1.api.dto.TrainerDto;
@@ -11,5 +11,5 @@ public interface TrainerMapper {
 
     TrainerDto trainerToTrainerDto(Trainer trainer);
 
-    Trainer trainerDtoToTrainer(TrainerDto trainer);
+    Trainer trainerDtoToTrainer(TrainerDto trainerDto);
 }

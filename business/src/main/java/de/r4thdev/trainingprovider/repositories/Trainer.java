@@ -2,11 +2,10 @@ package de.r4thdev.trainingprovider.repositories;
 
 
 import lombok.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +18,7 @@ import java.util.UUID;
 public class Trainer {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "name", nullable = false)

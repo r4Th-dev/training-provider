@@ -5,6 +5,13 @@ CREATE TABLE trainer
     description text
 );
 
+CREATE TABLE customer
+(
+    id          uuid PRIMARY KEY NOT NULL,
+    name        text             NOT NULL,
+    appointments text
+);
+
 CREATE TABLE training
 (
     id          uuid PRIMARY KEY NOT NULL,

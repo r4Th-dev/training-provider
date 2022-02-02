@@ -3,7 +3,7 @@ package de.r4thdev.trainingprovider.v1.rest;
 import de.r4thdev.trainingprovider.services.TrainingService;
 import de.r4thdev.trainingprovider.v1.api.TrainingApi;
 import de.r4thdev.trainingprovider.v1.api.dto.TrainingDto;
-import de.r4thdev.trainingprovider.v1.mapper.TrainingMapper;
+import de.r4thdev.trainingprovider.mapper.TrainingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

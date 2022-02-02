@@ -1,7 +1,6 @@
 package de.r4thdev.trainingprovider.v1.api.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 

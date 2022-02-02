@@ -22,5 +22,4 @@ public interface TrainerApi {
     @ResponseStatus(HttpStatus.CREATED)
     TrainerDto addTrainer(
             @RequestBody @Valid TrainerDto trainerDto);
-
 }

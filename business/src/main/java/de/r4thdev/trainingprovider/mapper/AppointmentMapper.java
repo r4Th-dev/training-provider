@@ -1,4 +1,4 @@
-package de.r4thdev.trainingprovider.v1.mapper;
+package de.r4thdev.trainingprovider.mapper;
 
 import de.r4thdev.trainingprovider.repositories.Appointment;
 import de.r4thdev.trainingprovider.v1.api.dto.AppointmentDto;

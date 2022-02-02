@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -30,4 +31,6 @@ public class Appointment {
     @JoinColumn(name = "training_id")
     private Training training;
 
+    @ManyToMany(mappedBy = "appointments")
+    private List<Customer> registrations;
 }
