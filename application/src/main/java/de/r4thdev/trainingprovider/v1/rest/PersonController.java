@@ -32,7 +32,7 @@ public class PersonController implements PersonApi {
 
     @Override
     public PersonDto editPerson(PersonDto personDto) {
-        return null;
+        return personService.editPerson(personDto);
     }
 
     @Override

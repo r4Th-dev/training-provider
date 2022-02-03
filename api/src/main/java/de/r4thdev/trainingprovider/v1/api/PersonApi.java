@@ -30,7 +30,7 @@ public interface PersonApi {
     PersonDto addPerson(
             @RequestBody @Valid PersonDto personDto);
 
-    @PutMapping("/{personId}")
+    @PutMapping("")
     @ResponseStatus(HttpStatus.OK)
     PersonDto editPerson(
             @RequestBody @Valid PersonDto personDto);

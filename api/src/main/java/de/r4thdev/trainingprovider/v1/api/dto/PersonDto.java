@@ -11,5 +11,6 @@ import java.util.UUID;
 public class PersonDto {
     private UUID id;
     private String name;
+    private String description;
     private HashMap<UUID, String> appointments;
 }

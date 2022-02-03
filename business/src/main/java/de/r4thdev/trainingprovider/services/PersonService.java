@@ -49,6 +49,15 @@ public class PersonService {
         );
     }
 
+    public PersonDto editPerson(PersonDto personDto) {
+        Person person = this.getPerson(personDto.getId());
+
+        if (personDto.getName() != null) person.setName(personDto.getName());
+        if (personDto.getDescription() != null) person.setName(personDto.getDescription());
+
+        return personMapper.personToPersonDto(this.createPerson(person));
+    }
+
     protected Person createPerson(Person person) {
         return personRepository.save(person);
     }
