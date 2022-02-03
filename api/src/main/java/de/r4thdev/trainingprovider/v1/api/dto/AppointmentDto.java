@@ -1,9 +1,10 @@
 package de.r4thdev.trainingprovider.v1.api.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.Instant;
-import java.util.List;
+import java.util.HashMap;
 import java.util.UUID;
 
 @Data
@@ -12,6 +13,6 @@ public class AppointmentDto {
     private UUID id;
     private Instant date;
     private TrainingDto training;
-    private TrainerDto trainer;
-    private List<CustomerDto> registrations;
+    private PersonDto trainer;
+    private HashMap<UUID, String> registrations;
 }

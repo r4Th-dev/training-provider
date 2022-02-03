@@ -1,6 +1,6 @@
 package de.r4thdev.trainingprovider.mapper;
 
-import de.r4thdev.trainingprovider.repositories.Training;
+import de.r4thdev.trainingprovider.entities.Training;
 import de.r4thdev.trainingprovider.v1.api.dto.TrainingDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

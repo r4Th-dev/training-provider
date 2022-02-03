@@ -1,12 +1,9 @@
-package de.r4thdev.trainingprovider.repositories;
+package de.r4thdev.trainingprovider.entities;
 
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +15,8 @@ import java.util.UUID;
 @Builder
 public class Training {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, updatable = false)
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "name", nullable = false)

@@ -1,23 +1,22 @@
-package de.r4thdev.trainingprovider.repositories;
+package de.r4thdev.trainingprovider.entities;
 
 
 import lombok.*;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "trainer")
+@Table(name = "person")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Trainer {
+public class Person {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, updatable = false)
     @GeneratedValue
     private UUID id;
 
@@ -26,4 +25,7 @@ public class Trainer {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "registrations")
+    private List<Appointment> appointments;
 }

@@ -3,7 +3,7 @@ spring:
     name: training-provider
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate.dialect: org.hibernate.dialect.H2Dialect
   datasource:

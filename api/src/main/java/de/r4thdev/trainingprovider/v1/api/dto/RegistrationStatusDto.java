@@ -1,11 +1,11 @@
 package de.r4thdev.trainingprovider.v1.api.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder
 public class RegistrationStatusDto {
-    private String appointment;
-    private String customer;
+    private AppointmentDto appointmentDto;
     private boolean registered;
 }
