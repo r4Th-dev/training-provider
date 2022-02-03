@@ -6,8 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 
 @RequestMapping(path = "/api/v1/trainings", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -18,13 +18,25 @@ public interface TrainingApi {
     @ResponseStatus(HttpStatus.OK)
     List<TrainingDto> getTrainings();
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    TrainingDto getTraining(
+            @PathVariable UUID id
+    );
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     TrainingDto addTraining(
-            @RequestBody @Valid TrainingDto trainingDto);
+            @RequestBody TrainingDto trainingDto);
 
     @PutMapping()
     @ResponseStatus(HttpStatus.CREATED)
     TrainingDto editTraining(
-            @RequestBody @Valid TrainingDto trainingDto);
+            @RequestBody TrainingDto trainingDto);
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    void deleteTraining(
+            @PathVariable UUID id
+    );
 }

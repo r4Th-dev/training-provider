@@ -1,6 +1,5 @@
 package de.r4thdev.trainingprovider.v1.rest;
 
-import de.r4thdev.trainingprovider.mapper.AppointmentMapper;
 import de.r4thdev.trainingprovider.services.AppointmentService;
 import de.r4thdev.trainingprovider.v1.api.AppointmentApi;
 import de.r4thdev.trainingprovider.v1.api.dto.AppointmentDto;
@@ -8,11 +7,12 @@ import de.r4thdev.trainingprovider.v1.api.dto.RegistrationDto;
 import de.r4thdev.trainingprovider.v1.api.dto.RegistrationStatusDto;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
 public class AppointmentController implements AppointmentApi {
@@ -20,30 +20,37 @@ public class AppointmentController implements AppointmentApi {
     @Autowired
     AppointmentService appointmentService;
 
-    AppointmentMapper appointmentMapper = AppointmentMapper.INSTANCE;
-
     @Override
-    public List<AppointmentDto> getAppointments(UUID personId) {
-        return appointmentService.getAppointments()
-                .stream()
-                .map(appointmentMapper::appointmentToAppointmentDto)
-                .collect(Collectors.toList());
+    public List<AppointmentDto> getAppointments() {
+        return appointmentService.getAppointmentDtos();
     }
 
     @Override
-    public AppointmentDto addAppointment(AppointmentDto appointmentDto) {
+    public AppointmentDto getAppointment(UUID id) {
+        return appointmentService.getAppointmentDto(id);
+    }
+
+    @Override
+    public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
         return appointmentService.createAppointment(appointmentDto);
     }
 
     @Override
-    public AppointmentDto editAppointment(AppointmentDto appointmentApi) {
+    public AppointmentDto editAppointment(AppointmentDto appointmentDto) {
+        if (appointmentDto.getId() == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the id must not be null");
+        return appointmentService.editAppointment(appointmentDto);
+    }
+
+    @Override
+    public AppointmentDto deleteAppointment(UUID id) {
         return null;
     }
 
     @SneakyThrows
     @Override
     public RegistrationStatusDto register(RegistrationDto registrationDto) {
-        return appointmentService.register(registrationDto.getAppointmentId(), registrationDto.getPersonId());
+        return appointmentService.register(registrationDto);
     }
 
     @Override

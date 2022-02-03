@@ -4,7 +4,9 @@ import de.r4thdev.trainingprovider.services.PersonService;
 import de.r4thdev.trainingprovider.v1.api.PersonApi;
 import de.r4thdev.trainingprovider.v1.api.dto.PersonDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +23,8 @@ public class PersonController implements PersonApi {
     }
 
     @Override
-    public PersonDto getPerson(UUID personId) {
-        return personService.getPersonDto(personId);
+    public PersonDto getPerson(UUID id) {
+        return personService.getPersonDto(id);
     }
 
     @Override
@@ -32,11 +34,13 @@ public class PersonController implements PersonApi {
 
     @Override
     public PersonDto editPerson(PersonDto personDto) {
+        if (personDto.getId() == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the id must not be null");
         return personService.editPerson(personDto);
     }
 
     @Override
-    public void deletePerson(UUID personId) {
-        personService.deletePerson(personId);
+    public void deletePerson(UUID id) {
+        personService.deletePerson(id);
     }
 }

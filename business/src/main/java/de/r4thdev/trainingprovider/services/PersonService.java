@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
+    PersonMapper personMapper = PersonMapper.INSTANCE;
 
     @Autowired
     PersonRepository personRepository;
 
-    PersonMapper personMapper = PersonMapper.INSTANCE;
 
     public List<PersonDto> getPersonDtos() {
         return this.getPersons()
@@ -49,6 +49,10 @@ public class PersonService {
         );
     }
 
+    protected Person createPerson(Person person) {
+        return personRepository.save(person);
+    }
+
     public PersonDto editPerson(PersonDto personDto) {
         Person person = this.getPerson(personDto.getId());
 
@@ -58,9 +62,6 @@ public class PersonService {
         return personMapper.personToPersonDto(this.createPerson(person));
     }
 
-    protected Person createPerson(Person person) {
-        return personRepository.save(person);
-    }
 
     public void deletePerson(UUID personId) {
         personRepository.deleteById(personId);

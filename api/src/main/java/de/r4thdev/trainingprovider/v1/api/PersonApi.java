@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,25 +18,27 @@ public interface PersonApi {
     @ResponseStatus(HttpStatus.OK)
     List<PersonDto> getPersons();
 
-    @GetMapping("/{personId}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     PersonDto getPerson(
-            @PathVariable UUID personId
+            @PathVariable UUID id
     );
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     PersonDto addPerson(
-            @RequestBody @Valid PersonDto personDto);
+            @RequestBody PersonDto personDto
+    );
 
-    @PutMapping("")
+    @PutMapping()
     @ResponseStatus(HttpStatus.OK)
     PersonDto editPerson(
-            @RequestBody @Valid PersonDto personDto);
+            @RequestBody PersonDto personDto
+    );
 
-    @DeleteMapping("/{personId}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deletePerson(
-            @PathVariable UUID personId
+            @PathVariable UUID id
     );
 }

@@ -27,7 +27,28 @@
 			"response": []
 		},
 		{
-			"name": "Create Persons",
+			"name": "Get Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Person",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -51,6 +72,58 @@
 						"api",
 						"v1",
 						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Karl Müller\",\r\n    \"description\":\"Master of the universe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Person",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/persons/32c37d0a-0b79-4763-92fe-3712309f4ec2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"persons",
+						"32c37d0a-0b79-4763-92fe-3712309f4ec2"
 					]
 				}
 			},
@@ -84,6 +157,40 @@
 						"api",
 						"v1",
 						"trainings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Training",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/trainings/1006dec1-f833-4b10-a278-a7e5330f4d7f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"trainings",
+						"1006dec1-f833-4b10-a278-a7e5330f4d7f"
 					]
 				}
 			},
@@ -159,7 +266,37 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"date\": \"2022-02-03 14:15:00\",\r\n    \"training\":{\r\n    \"id\": \"0872ba0a-3862-4e64-9562-01d0c61f6228\",\r\n    \"name\": \"Angular\",\r\n    \"description\": \"Simple Angular training.\",\r\n    \"price\": 500,\r\n    \"currency\": \"€\"\r\n},\r\n    \"trainer\":{\r\n    \"id\": \"6b912e4c-cf73-4da2-aa6f-4833f9b8e096\",\r\n    \"name\": \"Karl Müller\",\r\n    \"description\": \"Master of the universe\"\r\n},\r\n    \"registrations\": []\r\n}",
+					"raw": "{\r\n    \"date\": \"1970-01-01T00:00:00Z\",\r\n    \"training\": {\r\n        \"id\":\"5332ba02-5698-4ba8-8b2e-2d98d9aae72c\"\r\n    },\r\n    \"trainer\": {\r\n        \"id\": \"0f62fdb8-2f3f-4196-a6ac-8132dccfb19d\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/appointments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Appointment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"1970-01-01T00:00:00Z\",\r\n    \"training\": {\r\n        \"id\":\"5332ba02-5698-4ba8-8b2e-2d98d9aae72c\"\r\n    },\r\n    \"trainer\": {\r\n        \"id\": \"0f62fdb8-2f3f-4196-a6ac-8132dccfb19d\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -189,7 +326,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"appointmentId\":\"6008c232-0ff0-4e42-80e4-13b4d152fa59\"\r\n}",
+					"raw": "{\r\n  \"appointmentId\":\"36cf65a6-8116-4360-a25d-381c6e26a197\",\r\n  \"customerId\":\"ff5df9b2-1376-4f30-a2c2-d827208fde71\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

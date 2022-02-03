@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,29 +16,43 @@ import java.util.UUID;
 @Validated
 public interface AppointmentApi {
 
-    @GetMapping("/{personId}")
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    List<AppointmentDto> getAppointments(
-            @RequestParam UUID personId
+    List<AppointmentDto> getAppointments();
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    AppointmentDto getAppointment(
+            @PathVariable UUID id
     );
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    AppointmentDto addAppointment(
-            @RequestBody @Valid AppointmentDto appointmentApi);
+    AppointmentDto createAppointment(
+            @RequestBody AppointmentDto appointmentDto
+    );
 
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
     AppointmentDto editAppointment(
-            @RequestBody @Valid AppointmentDto appointmentApi);
+            @RequestBody AppointmentDto appointmentDto
+    );
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    AppointmentDto deleteAppointment(
+            @PathVariable UUID id
+    );
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
     RegistrationStatusDto register(
-            @RequestBody RegistrationDto registrationDto);
+            @RequestBody RegistrationDto registrationDto
+    );
 
     @PostMapping("/unregister")
     @ResponseStatus(HttpStatus.OK)
     RegistrationStatusDto unregister(
-            @RequestBody RegistrationDto registrationDto);
+            @RequestBody RegistrationDto registrationDto
+    );
 }
