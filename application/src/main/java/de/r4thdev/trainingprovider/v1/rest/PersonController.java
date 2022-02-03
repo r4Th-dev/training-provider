@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class PersonController implements PersonApi {
@@ -17,11 +17,26 @@ public class PersonController implements PersonApi {
 
     @Override
     public List<PersonDto> getPersons() {
-        return personService.getPersons(Optional.empty());
+        return personService.getPersonDtos();
+    }
+
+    @Override
+    public PersonDto getPerson(UUID personId) {
+        return personService.getPersonDto(personId);
     }
 
     @Override
     public PersonDto addPerson(PersonDto personDto) {
         return personService.createPerson(personDto);
+    }
+
+    @Override
+    public PersonDto editPerson(PersonDto personDto) {
+        return null;
+    }
+
+    @Override
+    public void deletePerson(UUID personId) {
+        personService.deletePerson(personId);
     }
 }

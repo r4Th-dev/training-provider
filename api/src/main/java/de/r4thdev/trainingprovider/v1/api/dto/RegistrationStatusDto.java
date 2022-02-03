@@ -8,4 +8,5 @@ import lombok.Data;
 public class RegistrationStatusDto {
     private AppointmentDto appointmentDto;
     private boolean registered;
+    private String message;
 }

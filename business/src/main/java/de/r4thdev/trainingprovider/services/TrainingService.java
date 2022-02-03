@@ -1,5 +1,6 @@
 package de.r4thdev.trainingprovider.services;
 
+import de.r4thdev.trainingprovider.exceptions.TrainingNotFoundException;
 import de.r4thdev.trainingprovider.mapper.TrainingMapper;
 import de.r4thdev.trainingprovider.repositories.TrainingRepository;
 import de.r4thdev.trainingprovider.v1.api.dto.TrainingDto;
@@ -34,5 +35,8 @@ public class TrainingService {
         trainingRepository.deleteById(trainingId);
     }
 
+    public void checkIfTrainingExist(UUID id) throws TrainingNotFoundException {
+        trainingRepository.findById(id).orElseThrow(TrainingNotFoundException::new);
+    }
 }
 

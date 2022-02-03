@@ -6,10 +6,12 @@ import de.r4thdev.trainingprovider.v1.api.AppointmentApi;
 import de.r4thdev.trainingprovider.v1.api.dto.AppointmentDto;
 import de.r4thdev.trainingprovider.v1.api.dto.RegistrationDto;
 import de.r4thdev.trainingprovider.v1.api.dto.RegistrationStatusDto;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -21,7 +23,7 @@ public class AppointmentController implements AppointmentApi {
     AppointmentMapper appointmentMapper = AppointmentMapper.INSTANCE;
 
     @Override
-    public List<AppointmentDto> getAppointments() {
+    public List<AppointmentDto> getAppointments(UUID personId) {
         return appointmentService.getAppointments()
                 .stream()
                 .map(appointmentMapper::appointmentToAppointmentDto)
@@ -38,6 +40,7 @@ public class AppointmentController implements AppointmentApi {
         return null;
     }
 
+    @SneakyThrows
     @Override
     public RegistrationStatusDto register(RegistrationDto registrationDto) {
         return appointmentService.register(registrationDto.getAppointmentId(), registrationDto.getPersonId());

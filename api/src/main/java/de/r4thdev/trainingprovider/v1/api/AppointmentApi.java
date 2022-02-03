@@ -10,15 +10,18 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 
 @RequestMapping(path = "/api/v1/appointments", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 public interface AppointmentApi {
 
-    @GetMapping()
+    @GetMapping("/{personId}")
     @ResponseStatus(HttpStatus.OK)
-    List<AppointmentDto> getAppointments();
+    List<AppointmentDto> getAppointments(
+            @RequestParam UUID personId
+    );
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
